@@ -42,5 +42,6 @@ void print_ints(const stack_t **h, int l);
 void print_string(const stack_t **h, int l);
 void pchar_stack(const stack_t **h, int l);
 void pchar_queue(const stack_t **h, int l);
+void swap(stack_t **h, int l);
 
 #endif
