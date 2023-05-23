@@ -77,7 +77,7 @@ void pchar_stack(const stack_t **h, int l)
  * opcode: pchar.
  * Return: void.
  */
-void pchar_stack(const stack_t **h, int l)
+void pchar_queue(const stack_t **h, int l)
 {
 	int value;
 
