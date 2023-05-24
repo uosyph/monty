@@ -1,13 +1,12 @@
 #include "monty.h"
 
 /**
- * pall - print all the elements in a dll as numbers.
- * @h: pointer to dll.
-`* @l: line number.
- * opcode: pall.
- * Return: void.
+ * pall - print all the elements in a dll as numbers
+ * @h: pointer to dll
+`* @l: line number
+ * opcode: pall
  */
-void pall(stack_t **h, int l)
+void pall(stack_t **h, unsigned int l)
 {
 	(void)l;
 
@@ -19,17 +18,15 @@ void pall(stack_t **h, int l)
 		printf("%d\n", (*h)->n);
 		*h = (*h)->next;
 	}
-	return (count);
 }
 
 /**
- * pstr - prints all the elements in a dll as chars.
- * @h: pointer to dll.
- * @l: line number.
- * opcode: pstr.
- * Return: void.
+ * pstr - print all the elements in a dll as chars
+ * @h: pointer to dll
+ * @l: line number
+ * opcode: pstr
  */
-void pstr(stack_t **h, int l)
+void pstr(stack_t **h, unsigned int l)
 {
 	(void)l;
 
@@ -41,17 +38,15 @@ void pstr(stack_t **h, int l)
 		printf("%c\n", (*h)->n);
 		*h = (*h)->next;
 	}
-	return (count);
 }
 
 /**
- * pchar - peeks the top of the stack.
- * @h: pointer to dll.
- * @l: line number.
- * opcode: pchar.
- * Return: void.
+ * pchar - peek the top of the stack
+ * @h: pointer to dll
+ * @l: line number
+ * opcode: pchar
  */
-void pint(stack_t **h, int l)
+void pint(stack_t **h, unsigned int l)
 {
 
 	if (!h || !*h)
@@ -65,13 +60,12 @@ void pint(stack_t **h, int l)
 }
 
 /**
- * pchar - peeks the top of the stack.
- * @h: pointer to dll.
- * @l: line number.
- * opcode: pchar.
- * Return: void.
+ * pchar - peek the top of the stack
+ * @h: pointer to dll
+ * @l: line number
+ * opcode: pchar
  */
-void pchar(stack_t **h, int l)
+void pchar(stack_t **h, unsigned int l)
 {
 	int value;
 
@@ -85,7 +79,6 @@ void pchar(stack_t **h, int l)
 	value = (*h)->n;
 	if (value < 0 || value > 127)
 	{
-
 		printf("L%d: can't pchar, value out of range\n", l);
 		free_stack(*h);
 		exit(EXIT_FAILURE);
