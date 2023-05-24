@@ -1,10 +1,10 @@
 #include "monty.h"
 
 /**
- * _add - adds the top 2 values on the stack
- * @h: pointer to dll
- * @l: line number
- * opcode add
+ * _add - adds the top 2 values of the stack.
+ * @h: pointer to dll.
+ * @l: line number.
+ * Return: void.
  */
 void _add(stack_t **h, unsigned int l)
 {
@@ -17,10 +17,10 @@ void _add(stack_t **h, unsigned int l)
 }
 
 /**
- * _sub - subtracts the top 2 values on the stack
- * @h: pointer to dll
- * @l: line number
- * opcode: sub
+ * _sub - subtracts the top 2 values of the stack.
+ * @h: pointer to dll.
+ * @l: line number.
+ * Return: void.
  */
 void _sub(stack_t **h, unsigned int l)
 {
@@ -33,10 +33,10 @@ void _sub(stack_t **h, unsigned int l)
 }
 
 /**
- * _div - divides the top 2 values on the stack
- * @h: pointer to dll
- * @l: line number
- * opcode: div
+ * _div - divides the top 2 values of the stack.
+ * @h: pointer to dll.
+ * @l: line number.
+ * Return: void.
  */
 void _div(stack_t **h, unsigned int l)
 {
@@ -55,10 +55,10 @@ void _div(stack_t **h, unsigned int l)
 }
 
 /**
- * _mul - multiply the top 2 values on the stack
- * @h: pointer to dll
- * @l: line number
- * opcode: mul
+ * _mul - multiply the top 2 values of the stack.
+ * @h: pointer to dll.
+ * @l: line number.
+ * Return: void.
  */
 void _mul(stack_t **h, unsigned int l)
 {
@@ -71,10 +71,10 @@ void _mul(stack_t **h, unsigned int l)
 }
 
 /**
- * _mod - gets the modulo of the top 2 values on the stack
- * @h: pointer to dll
- * @l: line number
- * opcode: mod
+ * _mod - gets the modulo of the top 2 values of the stack.
+ * @h: pointer to dll.
+ * @l: line number.
+ * Return: void.
  */
 void _mod(stack_t **h, unsigned int l)
 {
