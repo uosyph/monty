@@ -1,10 +1,10 @@
 #include "monty.h"
 
 /**
- * add_node - pushs or enqueues an element at the beginning of the stack.
- * @head: pointer to dll.
- * @n: value to add.
- * Return: pointer to new node or NULL.
+ * add_node - push or enqueue an element at the beginning of the stack
+ * @head: pointer to dll
+ * @n: value to add
+ * Return: pointer to new node or NULL
  */
 stack_t *add_node(stack_t **head, const int n)
 {
@@ -13,7 +13,7 @@ stack_t *add_node(stack_t **head, const int n)
 	if (!head)
 		return (NULL);
 
-	new = malloc(sizeof(dlistint_t));
+	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 		return (NULL);
 
@@ -24,14 +24,12 @@ stack_t *add_node(stack_t **head, const int n)
 	if (*head)
 		(*head)->prev = new;
 	*head = new;
-
 	return (new);
 }
 
 /**
- * free_stack - frees a dll of ints.
- * @head: pointer to a dll.
- * Return: void.
+ * free_stack - free a dll of int
+ * @head: a pointer to a dll
  */
 void free_stack(stack_t *head)
 {
@@ -46,46 +44,46 @@ void free_stack(stack_t *head)
 }
 
 /**
- * pop - gets the node at the beginning.
- * @head: pointer to a dll.
- * Return: pointer to the node or NULL.
+ * pop - return the node at the beginning
+ * @head: pointer to a dll
+ * Return: pointer to the node or NULL
  */
-stack_t *pop(stack_t **head)
+stack_t *pop_s(stack_t **head)
 {
-	stack_t *pnt;
+	stack_t *tmp;
 
 	if (!head || !*head)
 		return (NULL);
 
-	pnt = *head;
+	tmp = *head;
 	*head = (*head)->next;
 
 	if (*head)
-		(*head)->previous = NULL;
+		(*head)->prev = NULL;
 
-	return (pnt);
+	return (tmp); /*remember to free it*/
 }
 
 /**
- * dequeue - gets the node at the end.
- * @head: pointer to a dll.
- * Return: pointer to node or NULL.
+ * dequeue - return the node at the end
+ * @head: pointer to a dll
+ * Return: pointer to node or NULL
  */
 stack_t *dequeue(stack_t **head)
 {
-	stack_t *pnt;
+	stack_t *h;
 
 	if (!head || !*head)
 		return (NULL);
 
-	pnt = *head;
-	while (pnt->next != NULL)
-		pnt = pnt->next;
+	h = *head;
+	while (h->next != NULL)
+		h = h->next;
 
-	if (pnt->previous)
-		(pnt->previous)->next = NULL;
+	if (h->prev)
+		(h->prev)->next = NULL;
 	else
 		*head = NULL;
 
-	return (pnt);
+	return (h);
 }
