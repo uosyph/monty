@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+extern char *flag;
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -36,12 +38,16 @@ typedef struct instruction_s
 
 stack_t *add_node(stack_t **head, const int n);
 void free_stack(stack_t *head);
-stack_t *pop(stack_t **head);
+stack_t *pop_s(stack_t **head);
 stack_t *dequeue(stack_t *head);
-void print_ints(const stack_t **h, int l);
-void print_string(const stack_t **h, int l);
-void pchar_stack(const stack_t **h, int l);
-void pchar_queue(const stack_t **h, int l);
+void pall(stack_t **h, int l);
+void pstr(stack_t **h, int l);
+void pchar(stack_t **h, int l);
+void pint(stack_t **h, int l);
+void pop(stack_t **h, int l);
+void push(stack_t **h, int n);
 void swap(stack_t **h, int l);
+void rotl(stack_t **h, int l);
+void rotr(stack_t **h, int l);
 
 #endif
