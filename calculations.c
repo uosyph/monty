@@ -1,38 +1,7 @@
 #include "monty.h"
 
 /**
- * get_argument - return the arguments for calulations
- * @h: pointer to dll
- * @opcode: opcode string
- * @l: line number
- * Return: the argument
- */
-int get_argument(stack_t **h, char *opcode, unsigned int l)
-{
-    stack_t *node;
-    int tmp;
-
-    if (_strcmp(flag, "stack") == 0)
-    {
-        node = pop_s(h);
-    }
-    else
-    {
-        node = dequeue(h);
-    }
-    if (node == NULL)
-    {
-        printf("L%d: can't %s, %s too short\n", l, opcode, flag);
-        free_stack(*h);
-        exit(EXIT_FAILURE);
-    }
-    tmp = node->n;
-    free(node);
-    return (tmp);
-}
-
-/**
- * add - add the top 2 values on the stack
+ * _add - adds the top 2 values on the stack
  * @h: pointer to dll
  * @l: line number
  * opcode add
@@ -48,7 +17,7 @@ void _add(stack_t **h, unsigned int l)
 }
 
 /**
- * sub - subtract the top 2 values on the stack
+ * _sub - subtracts the top 2 values on the stack
  * @h: pointer to dll
  * @l: line number
  * opcode: sub
@@ -64,7 +33,7 @@ void _sub(stack_t **h, unsigned int l)
 }
 
 /**
- * div - divides the top 2 values on the stack
+ * _div - divides the top 2 values on the stack
  * @h: pointer to dll
  * @l: line number
  * opcode: div
@@ -86,7 +55,7 @@ void _div(stack_t **h, unsigned int l)
 }
 
 /**
- * mul - multiply the top 2 values on the stack
+ * _mul - multiply the top 2 values on the stack
  * @h: pointer to dll
  * @l: line number
  * opcode: mul
@@ -102,7 +71,7 @@ void _mul(stack_t **h, unsigned int l)
 }
 
 /**
- * mod - get the modulo of the top 2 values on the stack
+ * _mod - gets the modulo of the top 2 values on the stack
  * @h: pointer to dll
  * @l: line number
  * opcode: mod
