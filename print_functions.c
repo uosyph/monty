@@ -44,7 +44,7 @@ void pstr(stack_t **head, unsigned int l)
 }
 
 /**
- * pchar - peek the top of the stack
+ * pint - peek the top of the stack
  * @h: pointer to dll
  * @l: line number
  * opcode: pchar
