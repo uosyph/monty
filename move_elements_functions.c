@@ -1,32 +1,29 @@
 #include "monty.h"
 
 /**
- * swap - swaps the values of the top and the last element.
- * @h: head of the dll.
- * @l: line number.
- * opcode: swap.
- * Return: void.
+ * swap - swap the values of the top and last elements
+ * @h: head of the dll
+ * @l: line number
+ * opcode: swap
  */
-void swap(stack_t **h, int l)
+void swap(stack_t **h, unsigned int l)
 {
 	int value0;
 
 	if (!h || !*h)
 	{
-		printf("L%d: can't swap, stack too short\n", l);
+		printf("L%d: can't swap, %s too short\n", l, flag);
 		free_stack(*h);
-		free(command);
-		exit(EXIT_STATUS);
+		exit(EXIT_FAILURE);
 	}
 
 	value0 = (*h)->n;
 
 	if ((*h)->next == NULL)
 	{
-		printf("L%d: can't swap, stack too short\n", l);
+		printf("L%d: can't swap, %s too short\n", l, flag);
 		free_stack(*h);
-		free(command);
-		exit(EXIT_STATUS);
+		exit(EXIT_FAILURE);
 	}
 
 	(*h)->n = ((*h)->next)->n;
@@ -34,44 +31,43 @@ void swap(stack_t **h, int l)
 }
 
 /**
- * rotl - move the top elment of the stack to the back.
- * @h: head of the dll.
- * @l: line number.
- * opcode: rotl.
- * Return: void.
+ * rotl - the top element of the stack moves to the back
+ * @h: head of the dll
+ * @l: line number
+ * opcode: rotl
  */
-void rotl(stack_t **h, int l)
+void rotl(stack_t **h, unsigned int l)
 {
-	(void)l;
 	stack_t *node, *tmp;
+
+	(void)l;
 
 	if (!h || !*h)
 		return;
 	if (!(*h)->next)
 		return;
 
-	node = pop(h);
+	node = pop_s(h);
 	node->next = NULL;
 
 	tmp = *h;
 	while (tmp->next)
 		tmp = tmp->next;
-
 	tmp->next = node;
-	node->previous = tmp;
+	node->prev = tmp;
 }
 
 /**
- * rotr - moves the last elment of the stack to the top.
- * @h: pointer to dll.
- * @l: line number.
- * opcode: rotr.
- * Return: void.
+ * rotr - the last element of the stack moves on top
+ * @h: pointer to dll
+ * @l: line number
+ * opcode: rotr
  */
-void rotr(stack_t **h, int l)
+void rotr(stack_t **h, unsigned int l)
 {
-	(void)l;
 	stack_t *node;
+
+	(void)l;
 
 	if (!h || !*h)
 		return;
@@ -79,9 +75,9 @@ void rotr(stack_t **h, int l)
 		return;
 
 	node = dequeue(h);
-	node->previous = NULL;
+	node->prev = NULL;
 
-	node->next = *head;
-	(*head)->previous = node;
-	*head = node;
+	node->next = *h;
+	(*h)->prev = node;
+	*h = node;
 }
