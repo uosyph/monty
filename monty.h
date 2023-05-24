@@ -36,7 +36,7 @@ typedef struct instruction_s
 
 stack_t *add_node(stack_t **head, const int n);
 void free_stack(stack_t *head);
-stack_t *pull(stack_t **head);
+stack_t *pop(stack_t **head);
 stack_t *dequeue(stack_t *head);
 void print_ints(const stack_t **h, int l);
 void print_string(const stack_t **h, int l);
