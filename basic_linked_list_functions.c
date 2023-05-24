@@ -46,33 +46,46 @@ void free_stack(stack_t *head)
 }
 
 /**
- * pull - gets a node at the beginning.
+ * pop - gets the node at the beginning.
  * @head: pointer to a dll.
  * Return: pointer to the node or NULL.
  */
-stack_t *pull(stack_t **head)
+stack_t *pop(stack_t **head)
 {
-	stack_t *tmp;
+	stack_t *pnt;
 
-	if (!head == !*head)
+	if (!head || !*head)
 		return (NULL);
 
-	tmp = *head;
+	pnt = *head;
 	*head = (*head)->next;
 
-	return (tmp);
+	if (*head)
+		(*head)->previous = NULL;
+
+	return (pnt);
 }
 
 /**
- * dequeue - return the node at the end
- * @head: pointer to a dll
- * Return: pointer to node or NULL
+ * dequeue - gets the node at the end.
+ * @head: pointer to a dll.
+ * Return: pointer to node or NULL.
  */
-stack_t *dequeue(stack_t *head)
+stack_t *dequeue(stack_t **head)
 {
-	while (head->next != NULL)
-	{
-		head = head->next;
-	}
-	return (head);
+	stack_t *pnt;
+
+	if (!head || !*head)
+		return (NULL);
+
+	pnt = *head;
+	while (pnt->next != NULL)
+		pnt = pnt->next;
+
+	if (pnt->previous)
+		(pnt->previous)->next = NULL;
+	else
+		*head = NULL;
+
+	return (pnt);
 }

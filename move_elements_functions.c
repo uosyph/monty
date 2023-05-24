@@ -32,3 +32,56 @@ void swap(stack_t **h, int l)
 	(*h)->n = ((*h)->next)->n;
 	((*h)->next)->n = value0;
 }
+
+/**
+ * rotl - move the top elment of the stack to the back.
+ * @h: head of the dll.
+ * @l: line number.
+ * opcode: rotl.
+ * Return: void.
+ */
+void rotl(stack_t **h, int l)
+{
+	(void)l;
+	stack_t *node, *tmp;
+
+	if (!h || !*h)
+		return;
+	if (!(*h)->next)
+		return;
+
+	node = pop(h);
+	node->next = NULL;
+
+	tmp = *h;
+	while (tmp->next)
+		tmp = tmp->next;
+
+	tmp->next = node;
+	node->previous = tmp;
+}
+
+/**
+ * rotr - moves the last elment of the stack to the top.
+ * @h: pointer to dll.
+ * @l: line number.
+ * opcode: rotr.
+ * Return: void.
+ */
+void rotr(stack_t **h, int l)
+{
+	(void)l;
+	stack_t *node;
+
+	if (!h || !*h)
+		return;
+	if (!(*h)->next)
+		return;
+
+	node = dequeue(h);
+	node->previous = NULL;
+
+	node->next = *head;
+	(*head)->previous = node;
+	*head = node;
+}
