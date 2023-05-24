@@ -17,11 +17,13 @@ void execute(stack_t **h, char *line, unsigned int line_number)
         {"mod", _mod},
         {"pint", pint},
         {"pchar", pchar},
+        {"pop", pop},
         {"rotl", rotl},
         {"rotr", rotr},
         {"stack", stack},
         {"queue", queue},
         {"nop", nop},
+        {"swap", swap},
         {NULL, NULL}};
     int i;
     char *start_c;
@@ -29,7 +31,7 @@ void execute(stack_t **h, char *line, unsigned int line_number)
     start_c = skip_spaces(line);
     if (start_c == NULL)
         return;
-    printf("%s command given %s %d\n", __FILE__, start_c, _strlen("push"));
+
     if (_strncmp(start_c, "push", _strlen("push")) == 0)
     {
         push(h, line, line_number);
@@ -41,7 +43,6 @@ void execute(stack_t **h, char *line, unsigned int line_number)
         if (_strncmp(start_c, instr[i].opcode,
                      _strlen(instr[i].opcode)) == 0)
         {
-            printf("%s\n", instr[i].opcode);
             free(line);
             (instr[i].f)(h, line_number);
             return;

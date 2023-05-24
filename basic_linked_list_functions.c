@@ -52,6 +52,8 @@ stack_t *pop_s(stack_t **head)
 {
 	stack_t *tmp;
 
+	printf("%s\n", __FILE__);
+
 	if (!head || !*head)
 		return (NULL);
 
