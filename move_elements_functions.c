@@ -1,9 +1,10 @@
 #include "monty.h"
 
 /**
- * swap - swap the values of the top and last elements
- * @h: head of the dll
- * @l: line number
+ * swap - swaps the values of the top and last elements.
+ * @h: head of the dll.
+ * @l: line number.
+ * Return: void.
  * opcode: swap
  */
 void swap(stack_t **h, unsigned int l)
@@ -31,9 +32,10 @@ void swap(stack_t **h, unsigned int l)
 }
 
 /**
- * rotl - the top element of the stack moves to the back
- * @h: head of the dll
- * @l: line number
+ * rotl - moves the top elment of the stack to the back.
+ * @h: head of dll.
+ * @l: line number.
+ * Return: void.
  * opcode: rotl
  */
 void rotl(stack_t **h, unsigned int l)
@@ -43,9 +45,13 @@ void rotl(stack_t **h, unsigned int l)
 	(void)l;
 
 	if (!h || !*h)
+	{
 		return;
+	}
 	if (!(*h)->next)
+	{
 		return;
+	}
 
 	node = pop_s(h);
 	node->next = NULL;
@@ -53,14 +59,16 @@ void rotl(stack_t **h, unsigned int l)
 	tmp = *h;
 	while (tmp->next)
 		tmp = tmp->next;
+
 	tmp->next = node;
 	node->prev = tmp;
 }
 
 /**
- * rotr - the last element of the stack moves on top
- * @h: pointer to dll
- * @l: line number
+ * rotr - moves the last elment of the stack to the top.
+ * @h: pointer to dll.
+ * @l: line number.
+ * Return: void.
  * opcode: rotr
  */
 void rotr(stack_t **h, unsigned int l)
@@ -70,9 +78,13 @@ void rotr(stack_t **h, unsigned int l)
 	(void)l;
 
 	if (!h || !*h)
+	{
 		return;
+	}
 	if (!(*h)->next)
+	{
 		return;
+	}
 
 	node = dequeue(h);
 	node->prev = NULL;

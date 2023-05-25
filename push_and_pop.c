@@ -1,49 +1,57 @@
 #include "monty.h"
 
 /**
- * push - add an element to the stack/queue
- * @h: pointer to dll
- * @line: pointer to line
- * @l: line number
+ * push - adds an element to the stack/queue.
+ * @h: pointer to dll.
+ * @line: pointer to line.
+ * @l: line number.
+ * Return: 0 on success, -1 on failure.
  */
-void push(stack_t **h, char *line, unsigned int l)
+int push(stack_t **h, char *line, unsigned int l)
 {
     char *start_n;
     stack_t *node;
 
     start_n = reach_number(line);
+
     if (start_n == NULL)
     {
-        fprintf(stderr, "L%d: usage: push integer\n", l);
+        printf("L%d: usage: push integer\n", l);
         free(line);
-        free(*h);
-        *h = NULL;
-        exit(EXIT_FAILURE);
+        return (-1);
     };
 
-    node = add_node(h, atoi(start_n));
+    if (_strcmp(flag, "stack") == 0)
+    {
+        node = add_node(h, atoi(start_n));
+    }
+    else
+    {
+        node = add_node_end(h, atoi(start_n));
+    }
+
     free(line);
+
     if (node == NULL)
     {
         puts("Error: malloc failed");
-        free_stack(*h);
-        exit(EXIT_FAILURE);
+        return (-1);
     }
+
+    return (0);
 }
 
 /**
- * pop - pull an element from the stack or queue
- * @h: pointer to dll
- * @l: line number
+ * pop - pulls an element from the stack/queue.
+ * @h: pointer to dll.
+ * @l: line number.
+ * Return: void.
  */
 void pop(stack_t **h, unsigned int l)
 {
     stack_t *node;
 
-    if (_strcmp(flag, "stack") == 0)
-        node = pop_s(h);
-    else
-        node = dequeue(h);
+    node = pop_s(h);
 
     if (node == NULL)
     {
@@ -51,5 +59,6 @@ void pop(stack_t **h, unsigned int l)
         free_stack(*h);
         exit(EXIT_FAILURE);
     }
+
     free(node);
 }

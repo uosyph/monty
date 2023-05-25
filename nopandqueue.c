@@ -1,9 +1,9 @@
 #include "monty.h"
 
 /**
- * nop - do not do anything
- * @h: pointer to dll
- * @l: line number
+ * nop - stack and queue.
+ * @h: pointer to dll.
+ * @l: line number.
  */
 void nop(stack_t **h, unsigned int l)
 {
@@ -12,9 +12,10 @@ void nop(stack_t **h, unsigned int l)
 }
 
 /**
- * queue - change behavior to queue
- * @h: pointer to dll
- * @l: line number
+ * queue - changes behavior of the queue.
+ * @h: pointer to dll.
+ * @l: line number.
+ * Return: void.
  */
 void queue(stack_t **h, unsigned int l)
 {
@@ -25,9 +26,10 @@ void queue(stack_t **h, unsigned int l)
 }
 
 /**
- * stack - change behavior to stack
- * @h: pointer to dll
- * @l: line number
+ * stack - changes behavior of the stack.
+ * @h: pointer to dll.
+ * @l: line number.
+ * Return: void.
  */
 void stack(stack_t **h, unsigned int l)
 {

@@ -1,9 +1,10 @@
 #include "monty.h"
 
 /**
- * pall - print all the elements in a dll as numbers
- * @head: pointer to dll
-`* @l: line number
+ * pall - prints all the elements in dll as numbers.
+ * @head: pointer to dll.
+`* @l: line number.
+ * Return: void.
  * opcode: pall
  */
 void pall(stack_t **head, unsigned int l)
@@ -12,7 +13,10 @@ void pall(stack_t **head, unsigned int l)
 	(void)l;
 
 	if (!head)
+	{
 		return;
+	}
+
 	h = *head;
 	while (h != NULL)
 	{
@@ -22,9 +26,10 @@ void pall(stack_t **head, unsigned int l)
 }
 
 /**
- * pstr - print all the elements in a dll as chars
- * @head: pointer to dll
- * @l: line number
+ * pstr - prints all the elements in dll as chars.
+ * @head: pointer to dll.
+ * @l: line number.
+ * Return: void.
  * opcode: pstr
  */
 void pstr(stack_t **head, unsigned int l)
@@ -32,21 +37,23 @@ void pstr(stack_t **head, unsigned int l)
 	stack_t *h;
 	(void)l;
 
-	if (!head || !*head)
-		puts("");
-
-	h = *head;
-	while (h != NULL && h->n > 0 && h->n < 127)
+	if (head != NULL)
 	{
-		printf("%c\n", h->n);
-		h = h->next;
+		h = *head;
+		while (h != NULL && h->n > 0 && h->n < 127)
+		{
+			printf("%c", h->n);
+			h = h->next;
+		}
 	}
+	putchar('\n');
 }
 
 /**
- * pint - peek the top of the stack
- * @h: pointer to dll
- * @l: line number
+ * pint - peeks the top of the stack.
+ * @h: pointer to dll.
+ * @l: line number.
+ * Return: void.
  * opcode: pchar
  */
 void pint(stack_t **h, unsigned int l)
@@ -54,7 +61,7 @@ void pint(stack_t **h, unsigned int l)
 
 	if (!h || !*h)
 	{
-		printf("L%d: can't pint, %s empty\n", l, flag);
+		printf("L%d: can't pint, stack empty\n", l);
 		free_stack(*h);
 		exit(EXIT_FAILURE);
 	}
@@ -63,9 +70,10 @@ void pint(stack_t **h, unsigned int l)
 }
 
 /**
- * pchar - peek the top of the stack
- * @h: pointer to dll
- * @l: line number
+ * pchar - peeks the top of the stack.
+ * @h: pointer to dll.
+ * @l: line number.
+ * Return: void.
  * opcode: pchar
  */
 void pchar(stack_t **h, unsigned int l)
@@ -74,7 +82,7 @@ void pchar(stack_t **h, unsigned int l)
 
 	if (!h || !*h)
 	{
-		printf("L%d: can't pchar, %s empty\n", l, flag);
+		printf("L%d: can't pchar, stack empty\n", l);
 		free_stack(*h);
 		exit(EXIT_FAILURE);
 	}
