@@ -3,29 +3,29 @@
 char *flag = "stack";
 
 /**
- * main - main function to run monty
- * @ac: number of arguments
- * @av: list of arguments as strings
- * Return: 0
+ * main - main function to run monty.
+ * @ac: number of arguments.
+ * @av: list of arguments as strings.
+ * Return: 0 on success, 1 otherwise.
  */
 int main(int ac, char **av)
 {
     stack_t *h;
+    int exec_err, fp;
     unsigned int line_number;
     ssize_t status;
     char *line;
     size_t length;
-    FILE *fp;
 
     if (ac != 2)
     {
-        printf("USAGE: monty file\n");
-        exit(EXIT_FAILURE);
+        printf("USAGE: monty file\n"), exit(EXIT_FAILURE);
     }
 
     h = NULL;
-    fp = fopen(av[1], "r");
-    if (fp == NULL)
+
+    fp = open(av[1], O_RDONLY);
+    if (fp == -1)
     {
         printf("Error: Can't open file %s\n", av[1]);
         exit(EXIT_FAILURE);
@@ -37,15 +37,26 @@ int main(int ac, char **av)
         ++line_number;
         line = NULL;
         length = 0;
-        status = getline(&line, &length, fp);
-        if (status > 0)
-            execute(&h, line, line_number);
+        status = _getline(&line, &length, fp);
+        if (status > 2)
+        {
+            exec_err = execute(&h, line, line_number);
+            if (exec_err == -1)
+                status = -2;
+        }
         else
+        {
             free(line);
+        }
     } while (status >= 0);
 
-    fclose(fp);
-    free_stack(h);
+    close(fp);
+    free_stack(h), h = NULL;
 
-    return (0);
+    if (status == -1)
+    {
+        return (0);
+    }
+
+    exit(EXIT_FAILURE);
 }
