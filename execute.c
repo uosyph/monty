@@ -1,73 +1,86 @@
 #include "monty.h"
 
 /**
- * execute - finds the function matching the opcode
- * @h: pointer to dll
- * @line: command line
- * @line_number: line number of the command line in the file
+ * execute - finds the function matching the opcode.
+ * @h: pointer to dll.
+ * @line: command line.
+ * @line_number: line number of the command line in the file.
+ * Return: 0 on Success, 1 on blank lines or push, -1 on failure
  */
-void execute(stack_t **h, char *line, unsigned int line_number)
+int execute(stack_t **h, char *line, unsigned int line_number)
 {
-    instruction_t instr[] = {
-        {"pall", pall}, {"add", _add}, {"sub", _sub}, {"div", _div}, {"mul", _mul}, {"mod", _mod}, {"pint", pint}, {"pchar", pchar}, {"pop", pop}, {"rotl", rotl}, {"rotr", rotr}, {"stack", stack}, {"queue", queue}, {"nop", nop}, {"swap", swap}, {NULL, NULL}};
-    int i;
+   instruction_t instr[] = {
+		{"pall", pall}, {"add", _add},
+		{"sub", _sub}, {"div", _div},
+		{"mul", _mul}, {"mod", _mod},
+		{"pint", pint}, {"pchar", pchar},
+		{"pop", pop}, {"rotl", rotl},
+		{"rotr", rotr}, {"stack", stack},
+		{"queue", queue}, {"nop", nop},
+		{"swap", swap}, {"pstr", pstr},
+		{NULL, NULL}
+	};
+
+    int i, push_return;
     char *start_c;
 
     start_c = skip_spaces(line);
     if (start_c == NULL)
-        return;
+    {
+        free(line);
+        return (1);
+    }
+
     if (_strncmp(start_c, "push", _strlen("push")) == 0)
     {
-        push(h, line, line_number);
-        return;
+        push_return = push(h, line, line_number);
+        return ((push_return == 0) ? 0 : -1);
     }
 
     for (i = 0; instr[i].opcode; ++i)
     {
         if (_strncmp(start_c, instr[i].opcode, _strlen(instr[i].opcode)) == 0)
         {
-            free(line);
-            (instr[i].f)(h, line_number);
-            return;
+            free(line), (instr[i].f)(h, line_number);
+            return (0);
         }
     }
+
     printf("L%d: unknown instruction ", line_number);
     while (*start_c && (*start_c != ' ' && *start_c != '\t'))
+    {
         putchar(*start_c++);
+    }
+
     putchar('\n');
     free(line);
-    free_stack(*h);
-    *h = NULL;
-    exit(EXIT_FAILURE);
+
+    return (-1);
 }
 
 /**
- * get_argument - return the arguments for calulations
- * @h: pointer to dll
- * @opcode: opcode string
- * @l: line number
- * Return: the argument
+ * get_argument - gets the arguments for calulations.
+ * @h: pointer to dll.
+ * @opcode: opcode string.
+ * @l: line number.
+ * Return: the argument.
  */
 int get_argument(stack_t **h, char *opcode, unsigned int l)
 {
     stack_t *node;
     int tmp;
 
-    if (_strcmp(flag, "stack") == 0)
-    {
-        node = pop_s(h);
-    }
-    else
-    {
-        node = dequeue(h);
-    }
+    node = pop_s(h);
+
     if (node == NULL)
     {
-        printf("L%d: can't %s, %s too short\n", l, opcode, flag);
+        printf("L%d: can't %s, stack too short\n", l, opcode);
         free_stack(*h);
         exit(EXIT_FAILURE);
     }
+
     tmp = node->n;
     free(node);
+
     return (tmp);
 }

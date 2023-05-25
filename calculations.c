@@ -5,6 +5,7 @@
  * @h: pointer to dll.
  * @l: line number.
  * Return: void.
+ * opcode: add
  */
 void _add(stack_t **h, unsigned int l)
 {
@@ -21,6 +22,7 @@ void _add(stack_t **h, unsigned int l)
  * @h: pointer to dll.
  * @l: line number.
  * Return: void.
+ * opcode: sub
  */
 void _sub(stack_t **h, unsigned int l)
 {
@@ -37,6 +39,7 @@ void _sub(stack_t **h, unsigned int l)
  * @h: pointer to dll.
  * @l: line number.
  * Return: void.
+ * opcode: div
  */
 void _div(stack_t **h, unsigned int l)
 {
@@ -59,6 +62,7 @@ void _div(stack_t **h, unsigned int l)
  * @h: pointer to dll.
  * @l: line number.
  * Return: void.
+ * opcode: mul
  */
 void _mul(stack_t **h, unsigned int l)
 {
@@ -75,6 +79,7 @@ void _mul(stack_t **h, unsigned int l)
  * @h: pointer to dll.
  * @l: line number.
  * Return: void.
+ * opcode: mod
  */
 void _mod(stack_t **h, unsigned int l)
 {
