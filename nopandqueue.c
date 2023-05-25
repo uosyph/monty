@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * nop - stack and queue.
+ * nop - doesn’t do anything.
  * @h: pointer to dll.
  * @l: line number.
  */
