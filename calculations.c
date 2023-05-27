@@ -9,12 +9,12 @@
  */
 void _add(stack_t **h, unsigned int l)
 {
-    int n1, n2;
+	int n1, n2;
 
-    n1 = get_argument(h, "add", l);
-    n2 = get_argument(h, "add", l);
+	n1 = get_argument(h, "add", l);
+	n2 = get_argument(h, "add", l);
 
-    add_node(h, n1 + n2);
+	add_node(h, n1 + n2);
 }
 
 /**
@@ -26,12 +26,12 @@ void _add(stack_t **h, unsigned int l)
  */
 void _sub(stack_t **h, unsigned int l)
 {
-    int n1, n2;
+	int n1, n2;
 
-    n1 = get_argument(h, "sub", l);
-    n2 = get_argument(h, "sub", l);
+	n1 = get_argument(h, "sub", l);
+	n2 = get_argument(h, "sub", l);
 
-    add_node(h, n2 - n1);
+	add_node(h, n2 - n1);
 }
 
 /**
@@ -43,18 +43,18 @@ void _sub(stack_t **h, unsigned int l)
  */
 void _div(stack_t **h, unsigned int l)
 {
-    int n1, n2;
+	int n1, n2;
 
-    n1 = get_argument(h, "div", l);
-    n2 = get_argument(h, "div", l);
+	n1 = get_argument(h, "div", l);
+	n2 = get_argument(h, "div", l);
 
-    if (n1 == 0)
-    {
-        printf("L%d: division by zero\n", l);
-        free_stack(*h);
-        exit(EXIT_FAILURE);
-    }
-    add_node(h, n2 / n1);
+	if (n1 == 0)
+	{
+		printf("L%d: division by zero\n", l);
+		free_stack(*h);
+		exit(EXIT_FAILURE);
+	}
+	add_node(h, n2 / n1);
 }
 
 /**
@@ -66,12 +66,12 @@ void _div(stack_t **h, unsigned int l)
  */
 void _mul(stack_t **h, unsigned int l)
 {
-    int n1, n2;
+	int n1, n2;
 
-    n1 = get_argument(h, "mul", l);
-    n2 = get_argument(h, "mul", l);
+	n1 = get_argument(h, "mul", l);
+	n2 = get_argument(h, "mul", l);
 
-    add_node(h, n2 * n1);
+	add_node(h, n2 * n1);
 }
 
 /**
@@ -83,16 +83,16 @@ void _mul(stack_t **h, unsigned int l)
  */
 void _mod(stack_t **h, unsigned int l)
 {
-    int n1, n2;
+	int n1, n2;
 
-    n1 = get_argument(h, "mod", l);
-    n2 = get_argument(h, "mod", l);
+	n1 = get_argument(h, "mod", l);
+	n2 = get_argument(h, "mod", l);
 
-    if (n1 == 0)
-    {
-        printf("L%d: division by zero\n", l);
-        free_stack(*h);
-        exit(EXIT_FAILURE);
-    }
-    add_node(h, n2 % n1);
+	if (n1 == 0)
+	{
+		printf("L%d: division by zero\n", l);
+		free_stack(*h);
+		exit(EXIT_FAILURE);
+	}
+	add_node(h, n2 % n1);
 }
