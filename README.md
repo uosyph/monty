@@ -1,3 +1,5 @@
+<a name="readme-top"></a>
+
 # Monty
 Monty bytecode interpreter written in C, built to take in `.m` files as an argument and execute them.
 
@@ -11,8 +13,8 @@ Monty bytecode interpreter written in C, built to take in `.m` files as an argum
 - [Usage](#usage)
 - [Opcodes](#opcodes)
   - [What is opcodes](#what-is-opcodes)
-  - [Opcode-usage](#Oopcode-usage)
-  - [Opcode-example](#Oopcode-example)
+  - [Opcode-usage](#opcode-usage)
+  - [Opcode-example](#opcode-example)
   - [current opcodes](#current-opcodes)
 - [Files](#files)
 
@@ -98,3 +100,5 @@ pchar
 |[nopandqueue.c](nopandqueue.c)|Contains *nop*, *stack* and *queue* opcodes.|
 |[print_functions.c](print_functions.c)|Contains *pint*, *pall*, *pchar* and *pstr* opcodes.|
 |[push_and_pop.c](push_and_pop.c)|Contains *push* and *pop* opcodes.|
+
+<p align="right"><a href="#readme-top">Back to Top</a></p>
